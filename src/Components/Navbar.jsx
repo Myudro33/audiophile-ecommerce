@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const Navbar = ({setmenuOpen,setcartOpen}) => {
   return (
-    <div className="w-full h-24 flex items-center justify-between py-8 md:px-10 xs:px-6 dp:px-36 bg-[#191919] text-white">
+    <div className="w-full h-24 border-b-2 border-[gray] flex items-center justify-between py-8 md:px-10 xs:px-6 dp:px-36 bg-[#191919] text-white">
       <img onClick={()=>setmenuOpen(prev=>!prev)} className="dp:hidden w-4 h-4 cursor-pointer" src={burgerIcon} alt="butgericon" />
       <Link to={"/"}>
         <img  src={logo} alt="logo" />
