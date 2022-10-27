@@ -6,9 +6,9 @@ const Cart = ({ cartOpen }) => {
       {cartOpen && (
         <div
           style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
-          className="w-full h-screen flex xs:justify-center absolute top-24"
+          className="w-full h-[88vh] flex xs:justify-center absolute top-24"
         >
-          <div className="md:w-[25rem] flex flex-col p-8 xs:w-[90%] h-60 bg-white rounded-md absolute md:right-10 dp:right-40  top-5">
+          <div className="md:w-[25rem] z-20 flex flex-col p-8 xs:w-[90%] h-60 bg-white rounded-md absolute md:right-10 dp:right-40  top-5">
             <span className="flex justify-between">
               <h1 className="text-black text-lg font-semibold">CART (0)</h1>{" "}
               <p className="underline text-[#00000080] cursor-pointer">

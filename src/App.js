@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import BurgerMenu from "./Components/BurgerMenu";
 import Cart from "./Components/Cart";
 import Navbar from "./Components/Navbar";
