@@ -24,7 +24,7 @@ const BurgerMenu = ({ menuOpen }) => {
     },
     bmMenuWrap: {
       position: "fixed",
-      height: "65%",
+      height: '70%',
     },
     bmMenu: {
       background: "white",
@@ -46,8 +46,8 @@ const BurgerMenu = ({ menuOpen }) => {
   };
   return (
     <div>
-      <Menu styles={styles} noOverlay isOpen={menuOpen} width={"100%"} left>
-        <div className="bg-[#f1f1f1] w-full h-1/4">
+      <Menu   styles={styles} noOverlay isOpen={menuOpen} width={"100%"} left>
+        <div className="bg-[#f1f1f1] w-full h-[165px]">
           <img
             className="w-24 m-auto -translate-y-10"
             src={headphones}
@@ -59,7 +59,7 @@ const BurgerMenu = ({ menuOpen }) => {
             <Link to={'/headphones'}>SHOP</Link>
           </span>
         </div>
-        <div className="bg-[#f1f1f1] w-full h-1/4 mt-14">
+        <div className="bg-[#f1f1f1] w-full h-[165px] mt-14">
           <img
             className="w-24 m-auto -translate-y-10"
             src={speakers}
@@ -72,7 +72,7 @@ const BurgerMenu = ({ menuOpen }) => {
             <Link to={'/speakers'}>SHOP</Link>
           </span>
         </div>
-        <div className="bg-[#f1f1f1] w-full h-1/4 mt-14">
+        <div className="bg-[#f1f1f1] w-full h-[165px] mt-14">
           <img
             className="w-24 m-auto -translate-y-10"
             src={earphones}
