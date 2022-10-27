@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import BurgerMenu from "./Components/BurgerMenu";
 import Cart from "./Components/Cart";
 import Navbar from "./Components/Navbar";
@@ -15,8 +15,8 @@ const App = () => {
   const [hash, sethash] = useState("");
   return (
     <div className="flex w-full flex-col">
-        <UserContext.Provider value={{ hash, sethash }}>
-        <Navbar  setmenuOpen={setmenuOpen} setcartOpen={setcartOpen} />
+      <UserContext.Provider value={{ hash, sethash }}>
+        <Navbar setmenuOpen={setmenuOpen} setcartOpen={setcartOpen} />
         <BurgerMenu menuOpen={menuOpen} />
         <Cart cartOpen={cartOpen} />
         <Routes>
@@ -25,8 +25,8 @@ const App = () => {
           <Route path="/speakers" element={<Speakers />} />
           <Route path="/earphones" element={<Earphones />} />
         </Routes>
-    </UserContext.Provider>
-      </div>
+      </UserContext.Provider>
+    </div>
   );
 };
 
