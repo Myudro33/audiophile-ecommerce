@@ -2,6 +2,7 @@ import React from "react";
 import headphone from "../assets/home/desktop/image-hero.jpg";
 import tabletHeadphone from "../assets/home/tablet/image-header.jpg";
 import mobileHeadphones from "../assets//home/mobile/image-header.jpg";
+import { Link } from "react-router-dom";
 const Heading = () => {
   return (
     <div className="w-full md:h-[38.6rem] bg-[#191919] flex xs:justify-center md:justify-center">
@@ -16,9 +17,11 @@ const Heading = () => {
             Experience natural, lifelike audio and exceptional build quality
             made for the passionate music enthusiast.
           </p>
+          <Link to={'/product/4'}>
           <button className="h-12 w-40 mt-8 bg-[#d87d4a] text-white font-semibold hover:bg-[#da946c]">
             SEE PRODUCT
           </button>
+          </Link>
         </div>
         <img
           className="md:hidden dp:flex xs:hidden"

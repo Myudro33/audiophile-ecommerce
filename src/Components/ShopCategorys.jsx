@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const ShopCategorys = () => {
   return (
-    <div className="xs:w-[90%] dp:w-4/5 dp:h-52 md:h-44 xs:h-[47rem] flex xs:flex-col xs:justify-between md:flex-row md:justify-between xs:my-24 md:my-28">
+    <div className="xs:w-[90%] dp:w-4/5 dp:h-52 md:h-44 xs:h-[47rem] flex xs:flex-col xs:justify-between md:flex-row md:justify-between xs:my-24 md:my-32">
       <div className="bg-[#f1f1f1] rounded-lg xs:w-full xs:h-[25%] md:h-full  dp:w-[30%] md:w-[32%] flex  flex-col items-center">
         <img className="md:w-36 md:h-32 xs:w-28 xs:-translate-y-10 md:-translate-y-14" src={headphone} alt="img" />
         <h1 className="md:-translate-y-5 dp:-translate-y-0">Headphones</h1>

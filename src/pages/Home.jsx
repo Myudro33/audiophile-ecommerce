@@ -3,6 +3,7 @@ import Heading from "../Components/Heading";
 import { useContext } from "react";
 import { UserContext } from "../Context/UserContext";
 import ShopCategorys from "../Components/ShopCategorys";
+import HomeAds from "../Components/HomeAds";
 
 const Home = () => {
   const { sethash } = useContext(UserContext);
@@ -11,6 +12,7 @@ const Home = () => {
     <div className="flex flex-col items-center">
       <Heading />
       <ShopCategorys/>
+       <HomeAds/>
     </div>
   );
 };
