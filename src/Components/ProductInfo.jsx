@@ -1,15 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
+
 
 const ProductInfo = ({ filteredProduct }) => {
   const imageApi =
     "https://chkhikvadzeg.github.io/audiophile-ecommerce-website";
-  console.log(filteredProduct);
   return (
     <div className="dp:w-[80%] my-8 xs:w-[90%] xs:px-3 xs:h-[40rem] md:h-[30rem] dp:h-[35rem] flex xs:flex-col xs:justify-between md:flex-row dp:justify-between">
       <div className="bg-[#f1f1f1] flex justify-center items-center md:w-[48%] xs:w-full xs:h-[48%] md:h-full">
         <img
-          className="xs:w-1/2 md:w-[45%] xs:h-1/2 dp:w-1/2 md:h-[40%] rounded-lg"
+          className="xs:w-1/2 md:w-[45%] xs:h-1/2 dp:w-1/2 md:h-1/2 rounded-lg"
           src={`${imageApi}${filteredProduct.image.desktop}`}
           alt="product"
         />
