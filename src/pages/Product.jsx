@@ -1,11 +1,13 @@
-import React from 'react'
-import { useParams } from 'react-router-dom'
+import React from "react";
+import { useParams } from "react-router-dom";
+import data from "../storage.json";
 
 const Product = () => {
-    const {id} = useParams()
-  return (
-    <div>Product</div>
-  )
-}
+  const { id } = useParams();
+  const filteredProduct = data.filter((item) => item.id === Number(id));
+  console.log(filteredProduct);
 
-export default Product
+  return <div>{id}</div>;
+};
+
+export default Product;

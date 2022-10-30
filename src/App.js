@@ -9,6 +9,8 @@ import Earphones from "./pages/Earphones";
 import Speakers from "./pages/Speakers";
 import { UserContext } from "./Context/UserContext";
 import Product from "./pages/Product";
+import AudioGear from "./Components/AudioGear";
+import Footer from "./Components/Footer";
 
 const App = () => {
   const [menuOpen, setmenuOpen] = useState(false);
@@ -27,6 +29,8 @@ const App = () => {
           <Route path="/earphones" element={<Earphones />} />
           <Route path="/product/:id" element={<Product />} />
         </Routes>
+        <AudioGear />
+        <Footer />
       </UserContext.Provider>
     </div>
   );

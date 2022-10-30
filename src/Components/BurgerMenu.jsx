@@ -45,7 +45,7 @@ const BurgerMenu = ({ menuOpen }) => {
     },
   };
   return (
-    <div>
+    <div className="dp:hidden">
       <Menu   styles={styles} noOverlay isOpen={menuOpen} width={"100%"} left>
         <div className="bg-[#f1f1f1] w-full h-[165px]">
           <img

@@ -7,7 +7,7 @@ import { useContext } from "react";
 import { UserContext } from "../Context/UserContext";
 
 const Navbar = ({ setmenuOpen, setcartOpen }) => {
-  const {hash} = useContext(UserContext)
+  const { hash } = useContext(UserContext);
   return (
     <div className="w-full h-24 border-b-2 border-[gray] flex items-center justify-between py-8 md:px-10 xs:px-6 dp:px-36 bg-[#191919] text-white">
       <img
@@ -21,25 +21,33 @@ const Navbar = ({ setmenuOpen, setcartOpen }) => {
       </Link>
       <div className="h-full xs:hidden  md:flex w-[27rem] justify-between items-center">
         <Link
-          className={`hover:text-[#d87d4a] text-sm ${hash==='/'?'text-[#d87d4a]':''} tracking-wider font-medium `}
+          className={`hover:text-[#d87d4a] text-sm ${
+            hash === "/" ? "text-[#d87d4a]" : ""
+          } tracking-wider font-medium `}
           to={"/"}
         >
           HOME
         </Link>
         <Link
-          className={`hover:text-[#d87d4a] ${hash==='/headphones'?'text-[#d87d4a]':''} text-sm tracking-wider font-medium `}
+          className={`hover:text-[#d87d4a] ${
+            hash === "/headphones" ? "text-[#d87d4a]" : ""
+          } text-sm tracking-wider font-medium `}
           to={"/headphones"}
         >
           HEADPHONES
         </Link>
         <Link
-          className={`hover:text-[#d87d4a] ${hash==='/speakers'?'text-[#d87d4a]':''} text-sm tracking-wider font-medium`}
+          className={`hover:text-[#d87d4a] ${
+            hash === "/speakers" ? "text-[#d87d4a]" : ""
+          } text-sm tracking-wider font-medium`}
           to={"/speakers"}
         >
           SPEAKERS
         </Link>
         <Link
-          className={`hover:text-[#d87d4a] ${hash==='/earphones'?'text-[#d87d4a]':''} text-sm tracking-wider font-medium`}
+          className={`hover:text-[#d87d4a] ${
+            hash === "/earphones" ? "text-[#d87d4a]" : ""
+          } text-sm tracking-wider font-medium`}
           to={"/earphones"}
         >
           EARPHONES
