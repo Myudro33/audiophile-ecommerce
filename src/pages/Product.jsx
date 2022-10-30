@@ -5,11 +5,11 @@ import data from "../storage.json";
 import { Link } from "react-router-dom";
 import Features from "../Components/Features";
 import Galery from "../Components/Galery";
+import YouMayAlsoLike from "../Components/YouMayAlsoLike";
 
 const Product = () => {
   const { id } = useParams();
   const filteredProduct = data.filter((item) => item.id === Number(id));
-
 
   return (
     <div className="w-full flex flex-col items-center">
@@ -17,6 +17,7 @@ const Product = () => {
       <ProductInfo filteredProduct={filteredProduct[0]} />
       <Features filteredProduct={filteredProduct[0]} />
       <Galery images={filteredProduct[0].gallery} />
+      <YouMayAlsoLike similar={filteredProduct[0]} data={data} />
     </div>
   );
 };
