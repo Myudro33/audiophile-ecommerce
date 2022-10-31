@@ -30,7 +30,7 @@ const HomeAds = () => {
             Upgrade to premium speakers that are phenomenally built to deliver
             truly remarkable sound.
           </p>
-          <Link to="/product/9">
+          <Link to="/product/6">
             <button className="h-12 w-44 mt-10 bg-black hover:bg-[#2a2929] text-white">
               SEE PRODUCT
             </button>
@@ -51,7 +51,7 @@ const HomeAds = () => {
         />
         <div className="absolute h-1/2 w-[90%]">
           <h1 className="text-4xl font-semibold">ZX7 SPEAKER</h1>
-          <Link to="/product/7">
+          <Link to="/product/5">
             <button className="h-12 w-40 mt-8 border border-black font-semibold hover:bg-black hover:text-white ">
               SEE PRODUCT
             </button>

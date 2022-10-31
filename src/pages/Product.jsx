@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import Features from "../Components/Features";
 import Galery from "../Components/Galery";
 import YouMayAlsoLike from "../Components/YouMayAlsoLike";
+import ShopCategorys from '../Components/ShopCategorys'
 
 const Product = () => {
   const { id } = useParams();
@@ -18,6 +19,7 @@ const Product = () => {
       <Features filteredProduct={filteredProduct[0]} />
       <Galery images={filteredProduct[0].gallery} />
       <YouMayAlsoLike similar={filteredProduct[0]} data={data} />
+      <ShopCategorys />
     </div>
   );
 };

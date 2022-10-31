@@ -9,9 +9,9 @@ const ProductAds = ({ filteredData, reverse }) => {
     <div className="dp:w-[80%] my-16 xs:w-[90%] xs:h-[40rem] dp:h-[35rem] flex xs:flex-col xs:justify-between dp:flex-row dp:justify-between">
       {reverse === false && (
         <>
-          <div className="bg-[#f1f1f1] flex justify-center items-center dp:w-[48%] xs:w-full xs:h-[48%] dp:h-full">
+          <div className="bg-[#f1f1f1] flex justify-center items-center rounded-lg dp:w-[48%] xs:w-full xs:h-[48%] dp:h-full">
             <img
-              className="xs:w-full md:w-[45%] xs:h-full dp:w-full dp:h-full rounded-lg"
+              className="xs:w-full md:w-[45%] xs:h-full dp:w-[90%] dp:h-full rounded-lg"
               src={`${imageApi}${filteredData.image.desktop}`}
               alt="product"
             />
@@ -49,9 +49,9 @@ const ProductAds = ({ filteredData, reverse }) => {
               SEE PRODUCT
             </Link>
           </div>
-          <div className="bg-[#f1f1f1] xs:hidden dp:flex justify-center items-center dp:w-[48%] xs:w-full xs:h-[48%] dp:h-full">
+          <div className="bg-[#f1f1f1] xs:hidden dp:flex justify-center rounded-lg items-center dp:w-[48%] xs:w-full xs:h-[48%] dp:h-full">
             <img
-              className="xs:w-full md:w-[45%] xs:h-full dp:w-full dp:h-full rounded-lg"
+              className="xs:w-full md:w-[45%] xs:h-full dp:w-[90%] dp:h-full rounded-lg"
               src={`${imageApi}${filteredData.image.desktop}`}
               alt="product"
             />
