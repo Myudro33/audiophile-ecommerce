@@ -16,12 +16,14 @@ const App = () => {
   const [menuOpen, setmenuOpen] = useState(false);
   const [cartOpen, setcartOpen] = useState(false);
   const [hash, sethash] = useState("");
+  const [cartItems,setCartItems] = useState([])
+  console.log(cartItems);
   useEffect(()=>{
 window.scrollTo(0,0)
   },[hash])
   return (
     <div className="flex w-full flex-col">
-      <UserContext.Provider value={{ hash, sethash }}>
+      <UserContext.Provider value={{ hash, sethash,cartItems,setCartItems }}>
         <Navbar setmenuOpen={setmenuOpen} setcartOpen={setcartOpen} />
         <BurgerMenu menuOpen={menuOpen} />
         <Cart cartOpen={cartOpen} />
@@ -30,7 +32,7 @@ window.scrollTo(0,0)
           <Route path="/headphones" element={<Headphones />} />
           <Route path="/speakers" element={<Speakers />} />
           <Route path="/earphones" element={<Earphones />} />
-          <Route path="/product/:id" element={<Product />} />
+          <Route path="/product/:id" element={<Product cartItems={cartItems} setCartItems={setCartItems} />} />
         </Routes>
         <AudioGear />
         <Footer />

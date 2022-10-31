@@ -22,7 +22,7 @@ const Features = ({ filteredProduct }) => {
         <h1 className="md:text-[40px] xs:text-3xl xs:mt-10 md:mt-0 dp:w-full md:w-1/2 font-semibold">IN THE BOX</h1>
         <div className="dp:w-full md:w-[45%] xs:mt-5 md:mt-0 dp:mt-5 h-[70%] flex flex-col">
           {filteredProduct.includes.map((item) => (
-            <span className="flex text-[#d87d4a] font-semibold my-2">
+            <span key={Math.random()} className="flex text-[#d87d4a] font-semibold my-2">
               {`${item.quantity}x`}{" "}
               <p className="text-[#00000080] ml-5 ">{item.item}</p>
             </span>

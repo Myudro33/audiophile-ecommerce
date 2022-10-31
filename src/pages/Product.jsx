@@ -8,10 +8,11 @@ import Galery from "../Components/Galery";
 import YouMayAlsoLike from "../Components/YouMayAlsoLike";
 import ShopCategorys from '../Components/ShopCategorys'
 
+
 const Product = () => {
   const { id } = useParams();
   const filteredProduct = data.filter((item) => item.id === Number(id));
-
+  
   return (
     <div className="w-full flex flex-col items-center">
       <Link to={`/${filteredProduct[0].category}`} className="w-[80%] text-[#00000080]  mt-10">Go Back</Link>
