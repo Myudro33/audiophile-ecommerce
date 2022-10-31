@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 const ProductAds = ({ filteredData, reverse }) => {
   const imageApi =
     "https://chkhikvadzeg.github.io/audiophile-ecommerce-website";
-    console.log(filteredData);
-
   return (
     <div className="dp:w-[80%] my-16 xs:w-[90%] xs:h-[45rem] dp:h-[35rem] flex xs:flex-col xs:justify-between dp:flex-row dp:justify-between">
       {reverse === false && (

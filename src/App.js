@@ -17,7 +17,6 @@ const App = () => {
   const [cartOpen, setcartOpen] = useState(false);
   const [hash, sethash] = useState("");
   const [cartItems,setCartItems] = useState([])
-  console.log(cartItems);
   useEffect(()=>{
 window.scrollTo(0,0)
   },[hash])
