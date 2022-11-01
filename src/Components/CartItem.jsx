@@ -16,12 +16,12 @@ const CartItem = ({ price, name, image, quantity }) => {
   };
   const decreaseQuantity = () => {
     const newArray = cartItems.map((obj) => {
-      if (obj.name === name&&obj.quantity>1) {
+      if (obj.name === name) {
         console.log(obj);
         return { ...obj, quantity: (obj.quantity -= 1) };
       }
       return obj;
-    });
+    }).filter((item)=>item.quantity>0);
     setCartItems(newArray);
   };
   return (
