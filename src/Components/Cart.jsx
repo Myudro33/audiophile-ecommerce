@@ -4,7 +4,7 @@ import { UserContext } from "../Context/UserContext";
 import CartItem from "./CartItem";
 
 const Cart = ({ cartOpen }) => {
-  const { cartItems } = useContext(UserContext);
+  const { cartItems,setCartItems } = useContext(UserContext);
     return (
     <>
       {cartOpen && (
@@ -15,7 +15,7 @@ const Cart = ({ cartOpen }) => {
           <div className="md:w-[25rem] h-auto z-20 flex flex-col p-8 xs:w-[90%]  bg-white rounded-md absolute md:right-10 dp:right-40  top-5">
             <span className="flex justify-between">
               <h1 className="text-black text-lg font-semibold">CART (0)</h1>{" "}
-              <p className="underline text-[#00000080] cursor-pointer">
+              <p onClick={()=>setCartItems([])} className="underline text-[#00000080] cursor-pointer">
                 Remove all
               </p>
             </span>
