@@ -1,12 +1,15 @@
-import React,{useState} from "react";
-import { useEffect } from "react";
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { UserContext } from "../Context/UserContext";
 import CartItem from "./CartItem";
 
 const Cart = ({ cartOpen }) => {
-  const { cartItems,setCartItems } = useContext(UserContext);
-    return (
+  const {
+    cartItems,
+    setCartItems,
+    cartItemQuantity,
+    allItemPrice,
+  } = useContext(UserContext);
+  return (
     <>
       {cartOpen && (
         <div
@@ -15,8 +18,13 @@ const Cart = ({ cartOpen }) => {
         >
           <div className="md:w-[25rem] h-auto z-20 flex flex-col p-8 xs:w-[90%]  bg-white rounded-md absolute md:right-10 dp:right-40  top-5">
             <span className="flex justify-between">
-              <h1 className="text-black text-lg font-semibold">CART (0)</h1>{" "}
-              <p onClick={()=>setCartItems([])} className="underline text-[#00000080] cursor-pointer">
+              <h1 className="text-black text-lg font-semibold">
+                CART ({cartItemQuantity})
+              </h1>{" "}
+              <p
+                onClick={() => setCartItems([])}
+                className="underline text-[#00000080] cursor-pointer"
+              >
                 Remove all
               </p>
             </span>
@@ -33,7 +41,7 @@ const Cart = ({ cartOpen }) => {
             </div>
             <span className="flex justify-between text-[#00000080] mt-8">
               <p className="text-[#00000080]">Total</p>{" "}
-              <p className="text-black font-semibold">$ 0,00</p>
+              <p className="text-black font-semibold">{`$ ${allItemPrice},00`}</p>
             </span>
             <button className="w-full h-14 bg-[#d87d4a] text-white font-semibold mt-8 hover:bg-[#dfa07c]">
               CHECKOUT

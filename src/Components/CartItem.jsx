@@ -3,12 +3,13 @@ import { useContext } from "react";
 import { UserContext } from "../Context/UserContext";
 
 const CartItem = ({ price, name, image, quantity }) => {
-  const { cartItems, setCartItems,setCartItemQuantity } = useContext(UserContext);
- 
+  const { cartItems, setCartItems, setCartItemQuantity, setAllItemPrice } =
+    useContext(UserContext);
   const increaseQuantity = () => {
     const newArray = cartItems.map((obj) => {
       if (obj.name === name) {
-         setCartItemQuantity(prev=>prev+1)
+        setCartItemQuantity((prev) => prev + 1);
+        setAllItemPrice((prev) => prev + obj.price);
         return { ...obj, quantity: (obj.quantity += 1) };
       }
       return obj;
@@ -16,13 +17,16 @@ const CartItem = ({ price, name, image, quantity }) => {
     setCartItems(newArray);
   };
   const decreaseQuantity = () => {
-    const newArray = cartItems.map((obj) => {
-      if (obj.name === name) {
-        setCartItemQuantity(prev=>prev-1)
-        return { ...obj, quantity: (obj.quantity -= 1) };
-      }
-      return obj;
-    }).filter((item)=>item.quantity>0);
+    const newArray = cartItems
+      .map((obj) => {
+        if (obj.name === name) {
+          setCartItemQuantity((prev) => prev - 1);
+          setAllItemPrice((prev) => prev - obj.price);
+          return { ...obj, quantity: (obj.quantity -= 1) };
+        }
+        return obj;
+      })
+      .filter((item) => item.quantity > 0);
     setCartItems(newArray);
   };
   return (
@@ -32,7 +36,9 @@ const CartItem = ({ price, name, image, quantity }) => {
           <img className="w-1/2 h-1/2" src={image} alt="img" />
         </div>
         <div className="w-12">
-          <h1 className="text-black font-semibold text-sm">{name.slice(0,4)}</h1>
+          <h1 className="text-black font-semibold text-sm">
+            {name.slice(0, 4)}
+          </h1>
           <p className="text-[#00000080] text-sm font-semibold">{`$ ${price}`}</p>
         </div>
       </div>
