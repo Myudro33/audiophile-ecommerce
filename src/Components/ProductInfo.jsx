@@ -4,9 +4,8 @@ import { UserContext } from "../Context/UserContext";
 const ProductInfo = ({ filteredProduct }) => {
   const imageApi =
     "https://chkhikvadzeg.github.io/audiophile-ecommerce-website";
-  const { cartItems, setCartItems } = useContext(UserContext);
+  const { cartItems, setCartItems,setCartItemQuantity } = useContext(UserContext);
   const [itemQuantity, setItemQuantity] = useState(1);
-
   const addToCart = () => {
     if (!cartItems.some((item) => item.id === filteredProduct.id)) {
       setCartItems([
@@ -19,18 +18,23 @@ const ProductInfo = ({ filteredProduct }) => {
           quantity: itemQuantity,
         },
       ]);
+      setCartItemQuantity(prev=>prev+itemQuantity)
       return;
     } else {
       const newArray = cartItems.map((obj) => {
         if(obj.name===filteredProduct.name){
+          setCartItemQuantity(prev=>prev+itemQuantity)
           return { ...obj, quantity: (obj.quantity += itemQuantity) };
         }
         return obj
       });
       setCartItems(newArray);
     }
+    setItemQuantity(1)
   };
-
+  if(cartItems.length===0){
+    setCartItemQuantity(0)
+  }
   const increaseQuantity = () => {
     setItemQuantity((prev) => prev + 1);
   };

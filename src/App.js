@@ -17,12 +17,13 @@ const App = () => {
   const [cartOpen, setcartOpen] = useState(false);
   const [hash, sethash] = useState("");
   const [cartItems,setCartItems] = useState([])
+  const [cartItemQuantity,setCartItemQuantity] = useState(0)
   useEffect(()=>{
 window.scrollTo(0,0)
   },[hash])
   return (
     <div className="flex w-full flex-col">
-      <UserContext.Provider value={{ hash, sethash,cartItems,setCartItems }}>
+      <UserContext.Provider value={{ hash, sethash,cartItems,setCartItems,cartItemQuantity,setCartItemQuantity }}>
         <Navbar setmenuOpen={setmenuOpen} setcartOpen={setcartOpen} />
         <BurgerMenu menuOpen={menuOpen} />
         <Cart cartOpen={cartOpen} />

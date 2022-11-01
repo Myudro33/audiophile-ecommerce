@@ -3,11 +3,12 @@ import { useContext } from "react";
 import { UserContext } from "../Context/UserContext";
 
 const CartItem = ({ price, name, image, quantity }) => {
-  const { cartItems, setCartItems } = useContext(UserContext);
+  const { cartItems, setCartItems,setCartItemQuantity } = useContext(UserContext);
+ 
   const increaseQuantity = () => {
     const newArray = cartItems.map((obj) => {
       if (obj.name === name) {
-        console.log(obj);
+         setCartItemQuantity(prev=>prev+1)
         return { ...obj, quantity: (obj.quantity += 1) };
       }
       return obj;
@@ -17,7 +18,7 @@ const CartItem = ({ price, name, image, quantity }) => {
   const decreaseQuantity = () => {
     const newArray = cartItems.map((obj) => {
       if (obj.name === name) {
-        console.log(obj);
+        setCartItemQuantity(prev=>prev-1)
         return { ...obj, quantity: (obj.quantity -= 1) };
       }
       return obj;

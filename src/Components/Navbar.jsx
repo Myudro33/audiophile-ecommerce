@@ -7,7 +7,7 @@ import { useContext } from "react";
 import { UserContext } from "../Context/UserContext";
 
 const Navbar = ({ setmenuOpen, setcartOpen }) => {
-  const { hash } = useContext(UserContext);
+  const { hash, cartItemQuantity } = useContext(UserContext);
   return (
     <div className="w-full h-24 border-b-2 border-[gray] flex items-center justify-between py-8 md:px-10 xs:px-6 dp:px-36 bg-[#191919] text-white">
       <img
@@ -53,12 +53,19 @@ const Navbar = ({ setmenuOpen, setcartOpen }) => {
           EARPHONES
         </Link>
       </div>
-      <img
-        onClick={() => setcartOpen((prev) => !prev)}
-        className="cursor-pointer"
-        src={cartIcon}
-        alt="carticon"
-      />
+      <div>
+        <img
+          onClick={() => setcartOpen((prev) => !prev)}
+          className="cursor-pointer"
+          src={cartIcon}
+          alt="carticon"
+        />
+        {cartItemQuantity > 0 && (
+          <p className="absolute translate-x-4 -translate-y-8 bg-red-500 rounded-full w-5 h-5 text-xs flex justify-center items-center">
+            {cartItemQuantity}
+          </p>
+        )}
+      </div>
     </div>
   );
 };
