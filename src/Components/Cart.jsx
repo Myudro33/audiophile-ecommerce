@@ -5,7 +5,7 @@ import CartItem from "./CartItem";
 
 const Cart = ({ cartOpen }) => {
   const { cartItems } = useContext(UserContext);
-  return (
+    return (
     <>
       {cartOpen && (
         <div
@@ -22,7 +22,7 @@ const Cart = ({ cartOpen }) => {
             <div className="w-full flex flex-col h-44 my-5 overflow-scroll">
               {cartItems?.map((item) => (
                 <CartItem
-                  key={item.price}
+                  key={Math.random()}
                   price={item.price}
                   name={item.name}
                   image={item.image}

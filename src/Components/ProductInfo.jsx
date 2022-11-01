@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import { UserContext } from "../Context/UserContext";
 
 const ProductInfo = ({ filteredProduct }) => {
@@ -8,46 +8,26 @@ const ProductInfo = ({ filteredProduct }) => {
   const [itemQuantity, setItemQuantity] = useState(1);
 
   const addToCart = () => {
-    if (cartItems.length !== 0) {
-      for (const obj of cartItems) {
-        if (obj.name !== filteredProduct.name.slice(0, 4)) {
-          setCartItems([
-            ...cartItems,
-            {
-              name: filteredProduct.name.slice(0, 4),
-              price: filteredProduct.price,
-              image: `${imageApi}${filteredProduct.image.desktop}`,
-              quantity: itemQuantity,
-            },
-          ]);
-        } else {
-          const newArray = cartItems.map((obj) => {
-            return { ...obj, quantity: (obj.quantity += itemQuantity) };
-          });
-          setCartItems(newArray);
-        }
-      }
-    } else {
+    if (!cartItems.some((item) => item.id === filteredProduct.id)) {
       setCartItems([
         ...cartItems,
         {
-          name: filteredProduct.name.slice(0, 4),
+          id: filteredProduct.id,
+          name: filteredProduct.name,
           price: filteredProduct.price,
           image: `${imageApi}${filteredProduct.image.desktop}`,
           quantity: itemQuantity,
         },
       ]);
+      return;
+    } else {
+      const newArray = cartItems.map((obj) => {
+        return { ...obj, quantity: (obj.quantity += itemQuantity) };
+      });
+      setCartItems(newArray);
     }
   };
-  // setCartItems([
-  //   ...cartItems,
-  //   {
-  //     name: filteredProduct.name.slice(0, 4),
-  //     price: filteredProduct.price,
-  //     image: `${imageApi}${filteredProduct.image.desktop}`,
-  //     quantity: itemQuantity,
-  //   },
-  // ]);
+
   const increaseQuantity = () => {
     setItemQuantity((prev) => prev + 1);
   };

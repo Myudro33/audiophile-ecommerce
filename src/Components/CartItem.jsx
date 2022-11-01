@@ -3,12 +3,27 @@ import { useContext } from "react";
 import { UserContext } from "../Context/UserContext";
 
 const CartItem = ({ price, name, image, quantity }) => {
- const {cartItems ,setCartItems} = useContext(UserContext)
- console.log(cartItems);   
- const increaseQuantity = () => {
-  
+  const { cartItems, setCartItems } = useContext(UserContext);
+  const increaseQuantity = () => {
+    const newArray = cartItems.map((obj) => {
+      if (obj.name === name) {
+        console.log(obj);
+        return { ...obj, quantity: (obj.quantity += 1) };
+      }
+      return obj;
+    });
+    setCartItems(newArray);
   };
-  const decreaseQuantity = () => {};
+  const decreaseQuantity = () => {
+    const newArray = cartItems.map((obj) => {
+      if (obj.name === name&&obj.quantity>1) {
+        console.log(obj);
+        return { ...obj, quantity: (obj.quantity -= 1) };
+      }
+      return obj;
+    });
+    setCartItems(newArray);
+  };
   return (
     <div className="w-full h-16 flex justify-between items-center my-3 flex-shrink-0">
       <div className="h-full w-32 flex justify-between items-center">
@@ -16,7 +31,7 @@ const CartItem = ({ price, name, image, quantity }) => {
           <img className="w-1/2 h-1/2" src={image} alt="img" />
         </div>
         <div className="w-12">
-          <h1 className="text-black font-semibold text-sm">{name}</h1>
+          <h1 className="text-black font-semibold text-sm">{name.slice(0,4)}</h1>
           <p className="text-[#00000080] text-sm font-semibold">{`$ ${price}`}</p>
         </div>
       </div>
