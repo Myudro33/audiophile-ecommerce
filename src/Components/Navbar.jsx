@@ -6,10 +6,10 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../Context/UserContext";
 
-const Navbar = ({ setmenuOpen, setcartOpen }) => {
-  const { hash, cartItemQuantity } = useContext(UserContext);
+const Navbar = () => {
+  const { hash, cartItemQuantity,setmenuOpen,setcartOpen } = useContext(UserContext);
   return (
-    <div className="w-full h-24 border-b-2 border-[gray] flex items-center justify-between py-8 md:px-10 xs:px-6 dp:px-36 bg-[#191919] text-white">
+    <div className="w-full h-24 border-b-2 border-[gray] flex items-center justify-between py-8 md:px-10 xs:px-6 dp:px-36 bg-black text-white">
       <img
         onClick={() => setmenuOpen((prev) => !prev)}
         className="dp:hidden w-4 h-4 cursor-pointer"
@@ -61,7 +61,7 @@ const Navbar = ({ setmenuOpen, setcartOpen }) => {
           alt="carticon"
         />
         {cartItemQuantity > 0 && (
-          <p className="absolute translate-x-4 -translate-y-8 bg-red-500 rounded-full w-5 h-5 text-xs flex justify-center items-center">
+          <p className="absolute translate-x-4 -translate-y-8 bg-[#d87d4a] rounded-full w-5 h-5 text-xs flex justify-center items-center">
             {cartItemQuantity}
           </p>
         )}

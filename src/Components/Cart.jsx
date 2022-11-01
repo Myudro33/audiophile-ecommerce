@@ -1,10 +1,12 @@
 import React, { useContext } from "react";
 import { UserContext } from "../Context/UserContext";
 import CartItem from "./CartItem";
+import { Link } from "react-router-dom";
 
 const Cart = ({ cartOpen }) => {
   const {
     cartItems,
+    setcartOpen,
     setCartItems,
     cartItemQuantity,
     allItemPrice,
@@ -23,7 +25,7 @@ const Cart = ({ cartOpen }) => {
               </h1>{" "}
               <p
                 onClick={() => setCartItems([])}
-                className="underline text-[#00000080] cursor-pointer"
+                className="underline text-[#00000080] hover:text-[#d87d4a] cursor-pointer"
               >
                 Remove all
               </p>
@@ -43,9 +45,9 @@ const Cart = ({ cartOpen }) => {
               <p className="text-[#00000080]">Total</p>{" "}
               <p className="text-black font-semibold">{`$ ${allItemPrice},00`}</p>
             </span>
-            <button className="w-full h-14 bg-[#d87d4a] text-white font-semibold mt-8 hover:bg-[#dfa07c]">
+            <Link onClick={()=>setcartOpen(false)} to={'/checkout'} className="w-full h-14 flex justify-center items-center bg-[#d87d4a] text-white font-semibold mt-8 hover:bg-[#dfa07c]">
               CHECKOUT
-            </button>
+            </Link>
           </div>
         </div>
       )}
