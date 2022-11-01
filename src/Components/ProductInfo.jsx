@@ -22,7 +22,10 @@ const ProductInfo = ({ filteredProduct }) => {
       return;
     } else {
       const newArray = cartItems.map((obj) => {
-        return { ...obj, quantity: (obj.quantity += itemQuantity) };
+        if(obj.name===filteredProduct.name){
+          return { ...obj, quantity: (obj.quantity += itemQuantity) };
+        }
+        return obj
       });
       setCartItems(newArray);
     }
