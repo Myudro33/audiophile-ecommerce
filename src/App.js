@@ -49,7 +49,7 @@ const App = () => {
               <Product cartItems={cartItems} setCartItems={setCartItems} />
             }
           />
-          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/checkout" element={<Checkout allItemPrice={allItemPrice} />} />
         </Routes>
       </UserContext.Provider>
     </div>

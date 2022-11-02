@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { UserContext } from "../Context/UserContext";
 import CartItem from "./CartItem";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 
 const Cart = ({ cartOpen }) => {
   const {
@@ -9,8 +9,20 @@ const Cart = ({ cartOpen }) => {
     setcartOpen,
     setCartItems,
     cartItemQuantity,
+    setCartItemQuantity,
     allItemPrice,
+    setAllItemPrice,
+    hash
   } = useContext(UserContext);
+  const navigate = useNavigate()
+  const removeAll = () =>{
+    navigate(hash)
+    setcartOpen(false)
+    setCartItems([])
+    setCartItemQuantity(0)
+    setAllItemPrice(0)
+  }
+  
   return (
     <>
       {cartOpen && (
@@ -24,7 +36,7 @@ const Cart = ({ cartOpen }) => {
                 CART ({cartItemQuantity})
               </h1>{" "}
               <p
-                onClick={() => setCartItems([])}
+                onClick={removeAll}
                 className="underline text-[#00000080] hover:text-[#d87d4a] cursor-pointer"
               >
                 Remove all

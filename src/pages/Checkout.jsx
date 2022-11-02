@@ -8,32 +8,42 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 const Checkout = () => {
-  const { cartItems } = useContext(UserContext);
+  const { cartItems,allItemPrice } = useContext(UserContext);
   const [counter, setCounter] = useState(10);
   const [paymentMethod, setpaymentMethod] = useState(false);
+  const [shipping, setshipping] = useState(0)
+  const [vat, setvat] = useState(0)
+  const [total, settotal] = useState(0)
   const redirect = useNavigate();
-  const navigate = () => {
-    setCounter((prev) => (prev -= 1));
-    if (counter < 2 && cartItems.length === 0) {
+ 
+  useEffect(() => {
+    if (counter < 1 && cartItems.length === 0) {
       redirect("/");
     }
-  };
-  useEffect(() => {
-    setTimeout(navigate, 1000);
-  });
+    const timer =
+      counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
+    return () => clearInterval(timer);
+  }, [counter]);
 
+  useEffect(()=>{
+       setshipping(allItemPrice/100)
+       setvat(allItemPrice/5)
+       settotal(allItemPrice)
+       settotal((prev)=>prev+=shipping)
+       settotal((prev)=>prev+=vat)
+      })
   return (
-    <div className="w-full h-auto">
+    <div className="w-full h-auto bg-[#f1f1f1]">
       {cartItems.length > 0 ? (
         <div>
           <Navbar />
-          <div className={`w-full dp:h-auto md:h-[73rem] ${paymentMethod?'xs:h-[130rem]':'xs:h-[108rem]'} flex flex-col bg-red-200 
+          <div className={`w-full dp:h-auto ${paymentMethod?'md:h-[100rem]':'md:h-[92rem]'} ${paymentMethod?'xs:h-[125rem]':'xs:h-[110rem]'} flex flex-col 
           dp:px-36 dp:py-20 md:my-10 md:px-14 xs:py-5 xs:px-5`}>
             <Link className="text-[#00000080] w-full" to={"/"}>
               Go back
             </Link>
-            <div className="w-full h-full flex dp:flex-row xs:flex-col justify-between ">
-              <div className="flex p-4 dp:w-[62%] xs:w-full xs:h-[62%] dp:h-full bg-[#f1f1f1] rounded-lg my-2">
+            <div className="w-full h-full flex dp:flex-row xs:flex-col  justify-between ">
+              <div className={`flex p-4 dp:w-[62%] xs:w-full xs:h-[78rem] bg-white ${paymentMethod?'md:h-[52rem]':'md:h-[45rem]'} dp:h-full  rounded-lg my-2`}>
                 <form className="w-full h-full" action="">
                   <div className="w-full  md:h-56 xs:h-[21rem] justify-between flex flex-wrap">
                     <h1 className="font-semibold w-full text-[#d87d4a]">
@@ -154,6 +164,7 @@ const Checkout = () => {
                           }`}
                         >
                           <input
+                          onClick={() => setpaymentMethod(false)}
                             className="accent-[#d87d4a] w-4 h-4"
                             checked={paymentMethod}
                             name="pay"
@@ -170,6 +181,7 @@ const Checkout = () => {
                           }`}
                         >
                           <input
+                          onChange={() => setpaymentMethod(false)}
                             checked={!paymentMethod}
                             className="accent-[#d87d4a] h-4 w-4"
                             name="pay"
@@ -214,10 +226,46 @@ const Checkout = () => {
                   )}
                 </form>
               </div>
-              <div className=" dp:w-[35%] xs:w-full xs:h-[35%] dp:h-full bg-green-200 rounded-lg my-2"></div>
+              <div className={` dp:w-[35%] xs:w-full xs:h-[40rem] dp:h-full p-4 bg-white rounded-lg my-2`}>
+                <h1 className="font-semibold w-full text-lg">SUMMARY</h1>
+                <div className={`w-full ${cartItems.length>2?'h-72 overflow-y-scroll':'h-32'}`}>
+                  {cartItems.map((item)=>(
+                    <div key={Math.random()} className="h-16 w-full my-3 flex justify-between  items-center">
+                    <div className="dp:w-1/3 md:w-1/4 xs:w-1/2 h-full flex items-center">
+                      <div className="w-1/2 h-full bg-[#f1f1f1] rounded-lg flex justify-center items-center">
+                      <img className="w-1/2 h-1/2" src={item.image} alt="dawkdm" />
+                      </div>
+                      <span className="ml-2">
+                        <p className="text-black font-semibold text-base">{item.name.slice(0,4)}</p>
+                        <p className="font-semibold text-[#00000080]">{`$ ${item.price}`}</p>
+                      </span>
+                    </div>
+                    <p className="flex items-center font-semibold text-[#00000080]">{`x ${item.quantity}`}</p>
+                    </div>
+                  ))}
+                </div>
+                <div className="my-4 flex flex-col h-64">
+                  <span className="flex justify-between my-1 items-center" >
+                    <h1 className="text-lg text-[#00000080]">TOTAL </h1>
+                    <p className="text-black font-semibold text-lg">{`$ ${allItemPrice}`}</p>
+                  </span>
+                  <span className="flex justify-between my-1 items-center" >
+                    <h1 className="text-lg text-[#00000080]">SHIPPING</h1>
+                    <p className="text-black font-semibold text-lg " >{`$ ${shipping}`}</p>
+                  </span>
+                  <span className="flex justify-between my-1 items-center" >
+                    <h1 className="text-lg text-[#00000080]">VAT (INCLUDED)</h1>
+                    <p className="text-black font-semibold text-lg " >{`$ ${vat}`}</p>
+                  </span>
+                  <span className="flex justify-between my-4 items-center" >
+                    <h1 className="text-lg text-[#00000080]">GRAND TOTAL</h1>
+                    <p className="text-black font-semibold text-lg " >{(total).toFixed(2)}</p>
+                  </span>
+                  <button className="w-full h-14 bg-[#d87d4a] text-white font-semibold tracking-wider my-4">CONTINUE & PAY</button>
+                </div>
+              </div>
             </div>
           </div>
-
           <Footer />
         </div>
       ) : (
