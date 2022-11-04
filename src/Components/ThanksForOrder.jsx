@@ -26,7 +26,7 @@ const ThanksForOrder = ({ total, setorderSubmit }) => {
         <p className="text-[#000000bc] my-5">
           You will receive an email confirmation shortly{" "}
         </p>
-        <div className="flex w-full md:flex-row md:my-8 xs:my-2 xs:flex-col md:h-36 xs:h-52">
+        <div className="flex w-full md:flex-row md:my-8 xs:my-5 xs:flex-col md:h-36 xs:h-52">
           <div className="md:w-1/2 xs:w-full md:h-full p-5 bg-[#f1f1f1] rounded-l-lg  xs:h-[60%] overflow-y-scroll">
             {cartItems.map((item) => (
               <div
